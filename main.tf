@@ -1,5 +1,5 @@
 resource "random_password" "this" {
-  count = var.login && var.password != null ? 1 : 0
+  count = var.login && var.password == null ? 1 : 0
   length  = 16
   special = false
 }
