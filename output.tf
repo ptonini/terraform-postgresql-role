@@ -4,5 +4,5 @@ output "role" {
 
 output "password" {
   sensitive = true
-  value     = random_password.this[0].result
+  value     = var.login && var.password == null ? random_password.this[0].result : ""
 }
