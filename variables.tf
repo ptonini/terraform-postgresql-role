@@ -5,6 +5,12 @@ variable "password" {
 }
 
 variable "grants" {
+  type = map(object({
+    database    = string
+    privileges  = string
+    schema      = optional(string, "public")
+    object_type = optional(string, "database")
+  }))
   default = {}
 }
 

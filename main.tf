@@ -10,8 +10,8 @@ resource "postgresql_role" "this" {
 resource "postgresql_grant" "this" {
   for_each    = var.grants
   role        = postgresql_role.this.name
-  database    = each.value["database"]
-  privileges  = each.value["privileges"]
-  schema      = try(each.value["schema"], "public")
-  object_type = try(each.value["schema"], "database")
+  database    = each.value.database
+  privileges  = each.value.privileges
+  schema      = each.value.schema
+  object_type = each.value.object_type
 }
