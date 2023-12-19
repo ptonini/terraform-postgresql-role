@@ -1,9 +1,5 @@
 variable "name" {}
 
-variable "login" {
-  default = false
-}
-
 variable "password" {
   default = null
 }

@@ -1,13 +1,7 @@
-resource "random_password" "this" {
-  count   = var.login && var.password == null ? 1 : 0
-  length  = 16
-  special = false
-}
-
 resource "postgresql_role" "this" {
   name                = var.name
-  login               = var.login
-  password            = var.login ? var.password != null ? var.password : random_password.this.0.result : null
+  login               = var.password != null
+  password            = var.password
   roles               = var.roles
   search_path         = []
   skip_reassign_owned = var.skip_reassign_owned
